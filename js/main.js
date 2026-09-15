@@ -1,60 +1,114 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.site-header');
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav-links');
-  const current = window.location.pathname.split('/').pop() || 'index.html';
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector(".site-header");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
   const closeMenu = () => {
-    nav?.classList.remove('open');
-    document.body.classList.remove('menu-open');
-    toggle?.setAttribute('aria-expanded', 'false');
-    if (toggle) toggle.textContent = '☰';
+    navLinks?.classList.remove("open");
+    document.body.classList.remove("menu-open");
+    menuToggle?.setAttribute("aria-expanded", "false");
+    if (menuToggle) menuToggle.textContent = "☰";
   };
 
-  window.addEventListener('scroll', () => header?.classList.toggle('scrolled', window.scrollY > 16), { passive: true });
-  toggle?.addEventListener('click', () => {
-    const open = nav?.classList.toggle('open');
-    document.body.classList.toggle('menu-open', Boolean(open));
-    toggle.setAttribute('aria-expanded', String(Boolean(open)));
-    toggle.textContent = open ? '×' : '☰';
-  });
-  nav?.querySelectorAll('a').forEach((link) => {
-    link.classList.toggle('active', link.getAttribute('href') === current);
-    link.addEventListener('click', closeMenu);
+  window.addEventListener(
+    "scroll",
+    () => {
+      header?.classList.toggle("scrolled", window.scrollY > 16);
+    },
+    { passive: true },
+  );
+
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = navLinks?.classList.toggle("open");
+    document.body.classList.toggle("menu-open", Boolean(isOpen));
+    menuToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    menuToggle.textContent = isOpen ? "×" : "☰";
   });
 
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
+  navLinks?.querySelectorAll("a").forEach((link) => {
+    link.classList.toggle("active", link.getAttribute("href") === currentPage);
+    link.addEventListener("click", closeMenu);
+  });
+
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
         observer.unobserve(entry.target);
-      }
+      });
+    },
+    { threshold: 0.12 },
+  );
+
+  document
+    .querySelectorAll(
+      ".card, .solution-card, .sector-card, .metric-card, .product-card",
+    )
+    .forEach((element) => {
+      element.classList.add("reveal-item");
+      revealObserver.observe(element);
     });
-  }, { threshold: .12 });
-  document.querySelectorAll('.card, .solution-card, .sector-card, .profile, .product-card, .metric-card').forEach((item) => {
-    item.classList.add('reveal-item');
-    revealObserver.observe(item);
+
+  const filterButtons = document.querySelectorAll("[data-filter]");
+  const filterItems = document.querySelectorAll("[data-category]");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+
+      const filter = button.dataset.filter;
+      filterItems.forEach((item) => {
+        item.hidden = filter !== "all" && item.dataset.category !== filter;
+      });
+    });
   });
 
-  document.querySelectorAll('.faq-question').forEach((question) => question.addEventListener('click', () => {
-    const item = question.closest('.faq-item');
-    const open = item?.classList.toggle('open');
-    question.setAttribute('aria-expanded', String(Boolean(open)));
-  }));
+  const search = document.querySelector("[data-shop-search]");
+  search?.addEventListener("input", () => {
+    const term = search.value.trim().toLowerCase();
 
-  document.querySelectorAll('[data-count]').forEach((counter) => {
-    const target = Number(counter.dataset.count); const suffix = counter.dataset.suffix || ''; let value = 0;
-    const tick = () => { value = Math.min(target, value + Math.max(1, Math.ceil(target / 36))); counter.textContent = `${value}${suffix}`; if (value < target) requestAnimationFrame(tick); };
-    const observer = new IntersectionObserver((entries, instance) => { if (entries[0].isIntersecting) { tick(); instance.disconnect(); } }, { threshold: .6 }); observer.observe(counter);
+    document.querySelectorAll("[data-product]").forEach((product) => {
+      product.hidden = !product.textContent.toLowerCase().includes(term);
+    });
   });
 
-  const form = document.querySelector('#contact-form');
-  form?.addEventListener('submit', (event) => { event.preventDefault(); if (!form.checkValidity()) { form.reportValidity(); return; } const status = form.querySelector('.form-status'); if (status) status.textContent = 'Thank you. Our EU response desk will be in touch within one business day.'; form.reset(); });
+  document.querySelectorAll("[data-quote]").forEach((button) => {
+    button.addEventListener("click", () => {
+      button.textContent = "Added to quote";
+      button.classList.add("is-added");
+    });
+  });
 
-  const buttons = document.querySelectorAll('[data-filter]'); const items = document.querySelectorAll('[data-category]');
-  buttons.forEach((button) => button.addEventListener('click', () => { buttons.forEach((item) => item.classList.remove('active')); button.classList.add('active'); const filter = button.dataset.filter; items.forEach((item) => { item.hidden = filter !== 'all' && item.dataset.category !== filter; }); }));
+  const form = document.querySelector("#contact-form");
+  const formStatus = form?.querySelector(".form-status");
 
-  const search = document.querySelector('[data-shop-search]');
-  search?.addEventListener('input', () => { const term = search.value.toLowerCase(); document.querySelectorAll('[data-product]').forEach((item) => { item.hidden = !item.textContent.toLowerCase().includes(term); }); });
-  document.querySelectorAll('[data-quote]').forEach((button) => button.addEventListener('click', () => { button.textContent = 'Added to quote'; button.classList.add('is-added'); }));
+  form?.querySelectorAll("input, textarea, select").forEach((field) => {
+    field.addEventListener("blur", () => {
+      field.classList.toggle("invalid", !field.checkValidity());
+    });
+    field.addEventListener("input", () => {
+      if (field.checkValidity()) field.classList.remove("invalid");
+    });
+  });
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const fields = [...form.querySelectorAll("input, textarea, select")];
+    const isValid = fields.every((field) => {
+      field.classList.toggle("invalid", !field.checkValidity());
+      return field.checkValidity();
+    });
+
+    if (!isValid) {
+      formStatus.textContent = "Please review the highlighted fields.";
+      return;
+    }
+
+    formStatus.textContent = "Thank you. Your inquiry has been received.";
+    form.reset();
+    fields.forEach((field) => field.classList.remove("invalid"));
+  });
 });
