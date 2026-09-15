@@ -1,162 +1,129 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Shop Now | MGS Enterprise Store</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/main.js" defer></script>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="logo" href="index.html"
-          ><span class="logo-mark">M</span>MERCURY / MGS</a
-        ><button
-          class="menu-toggle"
-          type="button"
-          aria-label="Open navigation"
-          aria-expanded="false"
-        >
-          ☰
-        </button>
-        <nav class="nav-links">
-          <a href="index.html">Home</a><a href="services.html">Services</a
-          ><a href="ventures.html">Ventures</a
-          ><a class="active" href="shop.html">Shop Now</a
-          ><a class="nav-cta" href="contact.html">Contact</a>
-        </nav>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop | Mercury Global Systems</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/mgs-favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html">
+        <img class="logo-image" src="assets/images/mgs-logo.svg" alt="MGS">
+        <span>MERCURY / MGS</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="ventures.html">Ventures</a>
+        <a class="active" href="shop.html">Shop Now</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero reveal-section">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Shop Now</span></div>
+        <h1>The enterprise kit, carefully selected.</h1>
+        <p>Request a quote for the individual hardware and software products your team needs.</p>
       </div>
-    </header>
-    <main>
-      <section class="page-hero">
-        <div class="container">
-          <div class="breadcrumb">
-            <a href="index.html">Home</a><span>/</span><span>Shop Now</span>
-          </div>
-          <h1>The enterprise kit, carefully selected.</h1>
-          <p>
-            Hardware and software essentials for teams building dependable
-            systems.
-          </p>
+    </section>
+
+    <section class="section reveal-section">
+      <div class="container">
+        <label class="sr-only" for="shop-search">Search products</label>
+        <input class="search-box" id="shop-search" type="search" placeholder="Search products" data-shop-search>
+        <div class="filter-bar">
+          <button class="filter-button active" type="button" data-filter="all">All products</button>
+          <button class="filter-button" type="button" data-filter="software">Software</button>
+          <button class="filter-button" type="button" data-filter="storage">Storage</button>
         </div>
-      </section>
-      <section class="section">
-        <div class="container">
-          <label class="sr-only" for="shop-search">Search products</label
-          ><input
-            class="search-box"
-            id="shop-search"
-            type="search"
-            placeholder="Search enterprise hardware and software"
-            data-shop-search
-          />
-          <div class="filter-bar">
-            <button
-              class="filter-button active"
-              type="button"
-              data-filter="all"
-            >
-              All products</button
-            ><button class="filter-button" type="button" data-filter="storage">
-              Storage</button
-            ><button class="filter-button" type="button" data-filter="hardware">
-              Hardware</button
-            ><button class="filter-button" type="button" data-filter="software">
-              Software
-            </button>
-          </div>
-          <div class="product-grid">
-            <article class="product-card" data-category="storage" data-product>
-              <div
-                class="product-image"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?q=85&w=1000&quot;);
-                "
-              ></div>
-              <div class="product-copy">
-                <span class="card-kicker">Storage / NVMe</span>
-                <h3>M.2 NVMe SSD / 4TB</h3>
-                <p>Enterprise-grade endurance for high-throughput workloads.</p>
-                <strong class="product-price">€589</strong
-                ><button class="btn btn-primary" type="button" data-quote>
-                  Add to quote
-                </button>
-              </div>
-            </article>
-            <article class="product-card" data-category="hardware" data-product>
-              <div
-                class="product-image"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=85&w=1000&quot;);
-                "
-              ></div>
-              <div class="product-copy">
-                <span class="card-kicker">Hardware / Rack</span>
-                <h3>Enterprise Server Rack</h3>
-                <p>Modular 42U enclosure for secure deployments.</p>
-                <strong class="product-price">€2,490</strong
-                ><button class="btn btn-primary" type="button" data-quote>
-                  Add to quote
-                </button>
-              </div>
-            </article>
-            <article class="product-card" data-category="software" data-product>
-              <div
-                class="product-image"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=85&w=1000&quot;);
-                "
-              ></div>
-              <div class="product-copy">
-                <span class="card-kicker">Software / Productivity</span>
-                <h3>Windows 11 Pro + Office</h3>
-                <p>Business licensing for secure distributed teams.</p>
-                <strong class="product-price">€349 / seat</strong
-                ><button class="btn btn-primary" type="button" data-quote>
-                  Add to quote
-                </button>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-brand">
-          <a class="logo" href="index.html"
-            ><span class="logo-mark">M</span>MERCURY / MGS</a
-          >
-          <p>Enterprise technology built for the real world.</p>
-        </div>
-        <div>
-          <h3 class="footer-title">Navigate</h3>
-          <div class="footer-links">
-            <a href="services.html">Services</a
-            ><a href="ventures.html">Ventures</a
-            ><a href="contact.html">Contact</a>
-          </div>
-        </div>
-        <div>
-          <h3 class="footer-title">MGS focus</h3>
-          <div class="footer-links">
-            <span>Enterprise hardware</span><span>Software licensing</span
-            ><span>UK procurement desk</span>
-          </div>
-        </div>
-        <div>
-          <h3 class="footer-title">Support</h3>
-          <div class="footer-links">
-            <a href="contact.html">Contact MGS</a>
-            <a href="mailto:uk@mgs.global">uk@mgs.global</a>
-          </div>
+
+        <div class="product-grid">
+          <article class="product-card" data-category="software" data-product>
+            <div class="product-image product-image--software"></div>
+            <div class="product-copy"><span class="card-kicker">Software</span><h3>Win 11 Pro OEM</h3><p>Windows 11 Pro OEM license option.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="software" data-product>
+            <div class="product-image product-image--software"></div>
+            <div class="product-copy"><span class="card-kicker">Software</span><h3>Win 11 Pro DVD</h3><p>Windows 11 Pro DVD license option.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="software" data-product>
+            <div class="product-image product-image--software"></div>
+            <div class="product-copy"><span class="card-kicker">Software</span><h3>Windows 11 Pro USB</h3><p>Windows 11 Pro USB license option.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="software" data-product>
+            <div class="product-image product-image--software"></div>
+            <div class="product-copy"><span class="card-kicker">Software</span><h3>Office 2021 Pro</h3><p>Office 2021 Pro license option.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="software" data-product>
+            <div class="product-image product-image--software"></div>
+            <div class="product-copy"><span class="card-kicker">Software</span><h3>Office 2024 Pro</h3><p>Office 2024 Pro license option.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="software" data-product>
+            <div class="product-image product-image--software"></div>
+            <div class="product-copy"><span class="card-kicker">Software</span><h3>Office 2021 Pro Box</h3><p>Office 2021 Pro boxed license option.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="software" data-product>
+            <div class="product-image product-image--software"></div>
+            <div class="product-copy"><span class="card-kicker">Software</span><h3>Office 2024 Pro Box</h3><p>Office 2024 Pro boxed license option.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="software" data-product>
+            <div class="product-image product-image--software"></div>
+            <div class="product-copy"><span class="card-kicker">Software</span><h3>Office 2026</h3><p>Office 2026 license option.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+
+          <article class="product-card" data-category="storage" data-product>
+            <div class="product-image product-image--storage"></div>
+            <div class="product-copy"><span class="card-kicker">Storage / M.2</span><h3>M.2 128 GB</h3><p>M.2 storage product, 128 GB capacity.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="storage" data-product>
+            <div class="product-image product-image--storage"></div>
+            <div class="product-copy"><span class="card-kicker">Storage / M.2</span><h3>M.2 256 GB</h3><p>M.2 storage product, 256 GB capacity.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="storage" data-product>
+            <div class="product-image product-image--storage"></div>
+            <div class="product-copy"><span class="card-kicker">Storage / M.2</span><h3>M.2 512 GB</h3><p>M.2 storage product, 512 GB capacity.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="storage" data-product>
+            <div class="product-image product-image--storage"></div>
+            <div class="product-copy"><span class="card-kicker">Storage / M.2</span><h3>M.2 1 TB</h3><p>M.2 storage product, 1 TB capacity.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="storage" data-product>
+            <div class="product-image product-image--storage"></div>
+            <div class="product-copy"><span class="card-kicker">Storage / 2.5 inch SSD</span><h3>2.5&quot; SSD 128 GB</h3><p>2.5 inch SSD product, 128 GB capacity.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="storage" data-product>
+            <div class="product-image product-image--storage"></div>
+            <div class="product-copy"><span class="card-kicker">Storage / 2.5 inch SSD</span><h3>2.5&quot; SSD 256 GB</h3><p>2.5 inch SSD product, 256 GB capacity.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="storage" data-product>
+            <div class="product-image product-image--storage"></div>
+            <div class="product-copy"><span class="card-kicker">Storage / 2.5 inch SSD</span><h3>2.5&quot; SSD 512 GB</h3><p>2.5 inch SSD product, 512 GB capacity.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
+          <article class="product-card" data-category="storage" data-product>
+            <div class="product-image product-image--storage"></div>
+            <div class="product-copy"><span class="card-kicker">Storage / 2.5 inch SSD</span><h3>2.5&quot; SSD 1 TB</h3><p>2.5 inch SSD product, 1 TB capacity.</p><strong class="product-price">Contact for Quote</strong><button class="btn btn-primary" type="button" data-quote>Request Quote</button></div>
+          </article>
         </div>
       </div>
-      <div class="container footer-bottom">
-        <span>© 2026 Mercury Global Systems</span
-        ><span>Core verticals / UK contact</span>
-      </div>
-    </footer>
-  </body>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand"><a class="logo" href="index.html"><img class="logo-image" src="assets/images/mgs-logo.svg" alt="MGS">MERCURY / MGS</a><p>Enterprise technology built for the real world.</p></div>
+      <div><h3 class="footer-title">Navigate</h3><div class="footer-links"><a href="services.html">Services</a><a href="ventures.html">Ventures</a><a href="contact.html">Contact</a></div></div>
+      <div><h3 class="footer-title">MGS focus</h3><div class="footer-links"><span>Enterprise hardware</span><span>Software licensing</span><span>UK procurement desk</span></div></div>
+      <div><h3 class="footer-title">Support</h3><div class="footer-links"><a href="contact.html">Contact MGS</a><a href="mailto:info@mercuryglobalsystems.com">info@mercuryglobalsystems.com</a></div></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Mercury Global Systems</span><span>Core verticals / UK contact</span></div>
+  </footer>
+</body>
 </html>

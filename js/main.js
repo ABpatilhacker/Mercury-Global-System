@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .querySelectorAll(
-      ".card, .solution-card, .sector-card, .metric-card, .product-card",
+      ".reveal-section, .card, .solution-card, .sector-card, .metric-card, .product-card",
     )
     .forEach((element) => {
       element.classList.add("reveal-item");
